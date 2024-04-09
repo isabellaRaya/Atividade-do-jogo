@@ -1,0 +1,91 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#container {
+    position: relative;
+    border: 2px solid black; /* Adiciona uma borda preta ao redor do contêiner */
+}
+
+#game-container {
+    width: 400px;
+    height: 400px;
+    background-color: black;
+    position: relative;
+}
+
+#pacman {
+    width: 20px;
+    height: 20px;
+    background-color: yellow;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+#pacman-face {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.food {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.barrier {
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+    position: absolute;
+}
+
+.ghost {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+}
+
+#controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start-button,
+#score {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: green;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+#start-button:hover,
+#score:hover {
+    background-color: darkgreen;
+}
+
+#score {
+    margin-top: 10px;
+}
