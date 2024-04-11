@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ghosts = document.querySelectorAll('.ghost');
     const gameContainer = document.getElementById('game-container');
     const startButton = document.getElementById('start-button');
+    const speedDownButton = document.getElementById('speed-down'); // Adicionando o botão Diminuir Velocidade
     const scoreDisplay = document.getElementById('score');
 
     let pacmanX = 0;
@@ -13,26 +14,31 @@ document.addEventListener('DOMContentLoaded', () => {
     let pacmanDirection = 'right';
     let score = 0;
     let gameRunning = false;
+    let movementInterval = 100; // Intervalo de movimento inicial em milissegundos
     const pacmanSize = 40; // tamanho do Pac-Man
-    const margin = 5; // margem de colisão
+    const margin = 1; // margem de colisão reduzida
+    const minMovementInterval = 500; // Intervalo mínimo de movimento em milissegundos
 
-    const movementInterval = 100; // Intervalo de movimento em milissegundos
 
-    function movePacman() {
-        switch (pacmanDirection) {
-            case 'up':
-                pacmanY -= 20; // Modifique a velocidade ajustando os valores de deslocamento
-                break;
-            case 'down':
-                pacmanY += 20;
-                break;
-            case 'left':
-                pacmanX -= 20;
-                break;
-            case 'right':
-                pacmanX += 20;
-                break;
-        }
+        function movePacman() {
+            switch (pacmanDirection) {
+                case 'up':
+                    pacmanY -= 20;
+                    break;
+                case 'down':
+                    pacmanY += 20;
+                    break;
+                case 'left':
+                    pacmanX -= 20;
+                    break;
+                case 'right':
+                    pacmanX += 20;
+                    break;
+            }
+        
+            // Restante do código de detecção de colisão e atualização de posição...
+        
+        
 
         // Check for collision with walls
         if (pacmanX < 0 || pacmanX >= gameContainer.offsetWidth || pacmanY < 0 || pacmanY >= gameContainer.offsetHeight) {
@@ -80,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 rect1.top + margin > rect2.bottom);
     }
 
+
     function startGame() {
         if (!gameRunning) {
             pacmanX = 0;
@@ -93,10 +100,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function endGame() {
         gameRunning = false;
+        pacmanX = 0;
+        pacmanY = 0;
+        pacmanDirection = 'right';
         alert('Game Over! Sua pontuação: ' + score);
     }
 
     startButton.addEventListener('click', startGame);
+
+    speedDownButton.addEventListener('click', () => {
+        if (movementInterval < minMovementInterval) return; // Evita diminuir além do limite mínimo
+        movementInterval += 100; // Diminui o intervalo em 100ms
+    });
 
     document.addEventListener('keydown', e => {
         if (!gameRunning) return;

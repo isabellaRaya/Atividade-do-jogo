@@ -12,8 +12,8 @@ body {
 }
 
 #game-container {
-    width: 400px;
-    height: 400px;
+    width: 450px;
+    height: 450px;
     background-color: black;
     position: relative;
 }
@@ -80,6 +80,16 @@ body {
     color: white;
     cursor: pointer;
 }
+.speed-down {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: green;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
 
 #start-button:hover,
 #score:hover {
@@ -87,5 +97,11 @@ body {
 }
 
 #score {
-    margin-top: 10px;
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: green;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
 }
